@@ -7,7 +7,7 @@ Simple registration form for Kitsune.
   * [Bower](http://bower.io/) - A package manager. We use it for Bootstrap and jQuery. In the scope of this project, it is a global module.
 
 * [Composer](https://getcomposer.org/) - Dependency manager for PHP
-  * Configured [to include]((https://packagist.org/packages/google/recaptcha) the [ReCaptcha](http://www.google.com/recaptcha/) library.
+  * Configured [to include](https://packagist.org/packages/google/recaptcha) the [ReCaptcha](http://www.google.com/recaptcha/) library.
 
 ## Installation
 Once you've installed all of the prerequisites, you will need to run the following commands in order for the form to actually have all of the files that it needs.
