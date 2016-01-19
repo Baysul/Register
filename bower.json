@@ -1,0 +1,21 @@
+{
+  "name": "register",
+  "description": "A simple registration form for Kitsune.",
+  "main": "app.js",
+  "authors": [
+    "TunnelBlanket"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Kits-une/Register",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  }
+}
