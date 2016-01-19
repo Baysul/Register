@@ -1,0 +1,39 @@
+/* Possibly the shittiest CSS ever */
+@import url(https://fonts.googleapis.com/css?family=Duru+Sans);
+
+body {
+	font-family: 'Duru Sans', sans-serif;
+}
+
+form {
+	margin-left: 1%;
+}
+
+#title {
+	margin-left: 1%;
+	margin-top: 5px;
+	margin-bottom: 3px;
+	font-weight: 560;
+	font-size: 2.3em;
+}
+
+.form-group > input {
+	width: 25%;
+}
+
+.form-group > select {
+	width: 15%;
+}			
+
+.alert {
+	margin-left: 1%;
+	width: 35%;
+}
+
+span {
+	margin-right: 1%;
+}
+
+.g-recaptcha {
+	margin-top: 1%;
+}
