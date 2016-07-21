@@ -16,20 +16,25 @@ final class Database extends PDO {
 	public function __construct() {
 		$connectionString = sprintf("mysql:dbname=%s;host=%s", $this->config["Name"], $this->config["Host"]);
 
-		parent::__construct($connectionString, $this->config["User"], $this->config["Pass"]);
+		parent::__construct($connectionString, $this->config["User"], $this->config["Pass"],
+			array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 	}
 
 	public function addUser($username, $password, $color, $email = "none@kodomo.love") {
 		$swid = $this->generateUniqueId();
 
 		$hashedPassword = strtoupper(md5($password));
+		$staticKey = 'de437bb62c60b9202c041d3c56ffc32f33e0b838dc11175302e2cf479a39e0b0';
+
+		$userKey = $this->getLoginHash($hashedPassword, $staticKey);
+		$fancyPassword = password_hash($userKey, PASSWORD_DEFAULT);
 
 		$insertPenguin = "INSERT INTO `penguins` (`ID`, `Username`, `Nickname`, `Password`, `SWID`, `Email`, `RegistrationDate`, `Inventory`, `Color`, `Igloos`, `Floors`, `Locations`) VALUES ";
 		$insertPenguin .= "(NULL, :Username, :Username, :Password, :Swid, :Email, :Date, :Color, :Color, :Igloos, :Floors, :Locations);";
 		
 		$insertStatement = $this->prepare($insertPenguin);
 		$insertStatement->bindValue(":Username", $username);
-		$insertStatement->bindValue(":Password", $hashedPassword);
+		$insertStatement->bindValue(":Password", $fancyPassword);
 		$insertStatement->bindValue(":Swid", $swid);
 		$insertStatement->bindValue(":Email", $email);
 		$insertStatement->bindValue(":Date", time());
@@ -76,6 +81,24 @@ final class Database extends PDO {
 		return $rowCount > 0;
 	}
 
+	private function encryptPassword($password, $md5 = true) {
+		if($md5 !== false) {
+			$password = md5($password);
+		}
+		
+		$hash = substr($password, 16, 16) . substr($password, 0, 16);
+		return $hash;
+	}
+
+	private function getLoginHash($password, $randomKey) {		
+		$hash = $this->encryptPassword($password, false);
+		$hash .= $randomKey;
+		$hash .= "a1ebe00441f5aecb185d0ec178ca2305Y(02.>'H}t\":E1_root";
+		$hash = $this->encryptPassword($hash);
+		
+		return $hash;
+	}
+
 	private function generateUniqueId() {
 		mt_srand((double)microtime() * 10000);
 		
@@ -109,7 +132,7 @@ function attemptDataRetrieval($key) {
 	]);
 }
 
-$recaptcha = new \ReCaptcha\ReCaptcha("secret");
+$recaptcha = new \ReCaptcha\ReCaptcha("6LdcjCUTAAAAAF5fvOKpF-dAPBjACkIzFNLxxgis");
 $resp = $recaptcha->verify(attemptDataRetrieval("captcha"), $_SERVER["REMOTE_ADDR"]);
 if(!$resp->isSuccess()) response(["success" => false, "message" => "<strong>Uh oh!</strong> Invalid captcha."]);
 
