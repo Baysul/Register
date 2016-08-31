@@ -2,24 +2,27 @@
 Simple registration form for Kitsune.
 
 ## Prerequisites
-* [NPM](https://nodejs.org/)
-  * [Grunt](https://www.npmjs.com/package/grunt) - A task runner. In this project's case, it's used for compiling JS and CSS files, then minifying them. It also checks for syntax errors.
-  * [Bower](http://bower.io/) - A package manager. We use it for Bootstrap and jQuery. In the scope of this project, it is a global module.
+* [npm and node](https://nodejs.org/) - Make sure you have Node 6.x, npm comes with it.
+  * [Gulp](https://www.npmjs.com/package/gulp) - A task runner. In this project's case, it's used for compiling JS and CSS files, then minifying them. It also checks for syntax errors.
 
 * [Composer](https://getcomposer.org/) - Dependency manager for PHP
   * Configured [to include](https://packagist.org/packages/google/recaptcha) the [ReCaptcha](http://www.google.com/recaptcha/) library.
 
 ## Installation
+To install the prerequisites:
+
+*Install node and npm from the above link*
+
+*Install gulp-cli as a global dependency*
+```
+npm install -g gulp-cli
+```
+
 Once you've installed all of the prerequisites, you will need to run the following commands in order for the form to actually have all of the files that it needs.
 
-*Download NPM packages*
+*Download npm packages*
 ```
-npm update
-```
-
-*Download Bower dependencies*
-```
-bower update
+npm install
 ```
 
 *Download Composer dependencies*
@@ -27,9 +30,13 @@ bower update
 composer update
 ```
 
-*Run Grunt*
+*Run Gulp*
 ```
-grunt default
+gulp default
+```
+or
+```
+gulp
 ```
 
 ## Configuration
