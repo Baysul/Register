@@ -7,19 +7,27 @@
     "url": "git+https://github.com/widd/kitsune-register.git"
   },
   "author": "TunnelBlanket",
-  "contributors": [{
-    "name": "widd",
-    "email": "widd@teamimmersion.net"
-  }],
+  "contributors": [
+    {
+      "name": "widd",
+      "email": "widd@teamimmersion.net"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/widd/kitsune-register/issues"
   },
   "homepage": "https://github.com/widd/kitsune-register#readme",
   "dependencies": {
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "jquery": "^3.1.0"
   },
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^2.0.0",
+    "merge-stream": "^1.0.0"
   }
 }

@@ -2,4 +2,7 @@
 .idea/
 
 # exclude npm
-node_modules
+node_modules/
+
+# exclude build dir
+dist/
