@@ -13,6 +13,8 @@ To install the prerequisites:
 
 *Install node and npm from the above link*
 
+*Install composer from the above link*
+
 *Install gulp-cli as a global dependency*
 ```
 npm install -g gulp-cli
