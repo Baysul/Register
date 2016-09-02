@@ -1,6 +1,6 @@
 {
   "name": "kitsune-register",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "A simple registration form for Kitsune.",
   "repository": {
     "type": "git",

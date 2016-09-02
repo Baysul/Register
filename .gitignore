@@ -3,6 +3,7 @@
 
 # exclude npm
 node_modules/
+npm-debug.log
 
 # exclude build dir
 dist/
