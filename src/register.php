@@ -24,10 +24,9 @@ final class Database extends PDO {
 		$swid = $this->generateUniqueId();
 
 		$hashedPassword = strtoupper(md5($password));
-		$staticKey = 'de437bb62c60b9202c041d3c56ffc32f33e0b838dc11175302e2cf479a39e0b0';
+		$staticKey = 'e4a2dbcca10a7246817a83cd';
 
-		$userKey = $this->getLoginHash($hashedPassword, $staticKey);
-		$fancyPassword = password_hash($userKey, PASSWORD_DEFAULT);
+		$fancyPassword = $this->getLoginHash($hashedPassword, $staticKey, $username);
 
 		$insertPenguin = "INSERT INTO `penguins` (`ID`, `Username`, `Nickname`, `Password`, `SWID`, `Email`, `RegistrationDate`, `Inventory`, `Color`, `Igloos`, `Floors`, `Locations`) VALUES ";
 		$insertPenguin .= "(NULL, :Username, :Username, :Password, :Swid, :Email, :Date, :Color, :Color, :Igloos, :Floors, :Locations);";
@@ -90,11 +89,13 @@ final class Database extends PDO {
 		return $hash;
 	}
 
-	private function getLoginHash($password, $randomKey) {		
+	private function getLoginHash($password, $staticKey, $username) {		
 		$hash = $this->encryptPassword($password, false);
-		$hash .= $randomKey;
+		$hash .= $staticKey;
+		$hash .= $username;
 		$hash .= "a1ebe00441f5aecb185d0ec178ca2305Y(02.>'H}t\":E1_root";
 		$hash = $this->encryptPassword($hash);
+		$hash = password_hash($hash, PASSWORD_DEFAULT, [ 'cost' => 12 ]);
 		
 		return $hash;
 	}
