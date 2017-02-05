@@ -92,7 +92,6 @@ final class Database extends PDO {
 	private function getLoginHash($password, $staticKey, $username) {		
 		$hash = $this->encryptPassword($password, false);
 		$hash .= $staticKey;
-		$hash .= $username;
 		$hash .= "a1ebe00441f5aecb185d0ec178ca2305Y(02.>'H}t\":E1_root";
 		$hash = $this->encryptPassword($hash);
 		$hash = password_hash($hash, PASSWORD_DEFAULT, [ 'cost' => 12 ]);
