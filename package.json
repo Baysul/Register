@@ -4,7 +4,7 @@
   "description": "A simple registration form for Kitsune.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/widd/kitsune-register.git"
+    "url": "git+https://github.com/kits-une/register.git"
   },
   "author": "TunnelBlanket",
   "contributors": [
