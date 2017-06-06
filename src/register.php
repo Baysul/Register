@@ -24,7 +24,7 @@ final class Database extends PDO {
 		$swid = $this->generateUniqueId();
 
 		$hashedPassword = strtoupper(md5($password));
-		$staticKey = 'e4a2dbcca10a7246817a83cd' . $username;
+		$staticKey = 'e4a2dbcca10a7246817a83cd';
 
 		$fancyPassword = $this->getLoginHash($hashedPassword, $staticKey, $username);
 
