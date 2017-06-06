@@ -44,20 +44,5 @@ $(function() {
 		event.preventDefault();
 	}
 
-	var addItems = function(data) {
-		$.each(data, function(itemId, itemDetails) {
-			if(itemDetails["type"] == 1) {
-				var colorItem = $("<option></option>").attr("value", itemDetails["paper_item_id"]).text(itemDetails["label"]);
-
-				$("#color").append(colorItem);
-
-			} else {
-				return false;
-			}
-		});
-	}
-
 	$("form").submit(handleSubmission);
-
-	$.getJSON("https://crossorigin.me/http://media1.clubpenguin.com/play/en/web_service/game_configs/paper_items.json", addItems);
 });
